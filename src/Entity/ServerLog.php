@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ServerLogRepository")
@@ -19,16 +21,21 @@ class ServerLog
 
     /**
      * @ORM\Column(name="server", type="string", length=10)
+     * @Assert\NotBlank()
+     * @Assert\Length(max=10)
      */
     private $server;
 
     /**
      * @ORM\Column(name="status", type="string", length=20)
+     * @Assert\NotBlank()
+     * @Assert\Length(max=20)
      */
     private $status;
 
     /**
      * @ORM\Column(name="date_log", type="datetime")
+     * @Assert\NotBlank()
      */
     private $dateLog;
 
