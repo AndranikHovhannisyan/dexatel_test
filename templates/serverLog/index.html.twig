@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dexatel Testing Project{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="css/table.css">
+{% endblock %}
+
+{% block body %}
+
+{{ form_start(searchForm, {'method': 'GET'}) }}
+
+<table class="customers">
+    <tr>
+        <th>Id</th>
+        <th>Server</th>
+        <th>Status</th>
+        <th>Date Log</th>
+        <th>Date Added</th>
+    </tr>
+    <tr>
+        <td></td>
+        <td>{{ form_widget(searchForm.server) }}</td>
+        <td>{{ form_widget(searchForm.status) }}</td>
+        <td>{{ form_widget(searchForm.dateLog) }}</td>
+        <td>{{ form_widget(searchForm.dateAdded) }}</td>
+    </tr>
+    {% for serverLog in serverLogs %}
+    <tr>
+        <td>{{ serverLog.id }}</td>
+        <td>{{ serverLog.server }}</td>
+        <td>{{ serverLog.status }}</td>
+        <td>{{ serverLog.dateLog|date('Y-m-d H:i:s') }}</td>
+        <td>{{ serverLog.dateAdded|date('Y-m-d H:i:s') }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<input type="submit" style="visibility: hidden;" />
+
+{{ form_end(searchForm) }}
+
+{% endblock %}
