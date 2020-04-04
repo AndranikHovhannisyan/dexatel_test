@@ -16,5 +16,10 @@ pipeline {
                 sh 'ssh vaz@85.25.185.144 \'hostname\''
             }
         }
+        stage("Second step") {
+            steps {
+                sh 'ssh vaz@85.25.185.144 \'uptime\''
+            }
+        }
     }
 }
